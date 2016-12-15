@@ -1,9 +1,10 @@
 object exercise {
-  def factorial (n: Int, r: Int): Int = {
-    def loop(acc: Int, n: Int) = {
+  def factorial (n: Int): Int = {
+    def loop(acc: Int, n: Int): Int = {
       if (n==0) acc
-      else ???
+      else loop(acc * n, n -1)
     }
-    loop(???, n)
+    loop(1, n)
   }
+  factorial(4)
 }

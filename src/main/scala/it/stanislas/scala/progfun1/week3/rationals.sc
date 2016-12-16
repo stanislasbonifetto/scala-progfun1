@@ -5,10 +5,10 @@ object rationals {
 
   x.numer
   x.denom
-  x.sub(y).sub(z)
-  y.add(y)
-  x.less(y)
-  x.max(y)
+  x - y - z
+  y + y
+  x < y
+  x max y
 
   new Rational(2)
 
@@ -22,20 +22,20 @@ object rationals {
     def numer = x
     def denom = y
 
-    def less(that: Rational) = this.numer * that.denom < that.numer * this. denom
+    def < (that: Rational) = this.numer * that.denom < that.numer * this. denom
 
-    def max(that: Rational) = if(this.less(that)) that else this
+    def max(that: Rational) = if(this < that) that else this
 
 
-    def add(that: Rational) =
+    def + (that: Rational) =
       new Rational(
         numer * that.denom + that.numer * denom,
         denom * that.denom
       )
 
-    def neg: Rational = new Rational(-numer, denom)
+    def unary_- : Rational = new Rational(-numer, denom)
 
-    def sub(that: Rational) = add(that.neg)
+    def - (that: Rational) = this + -that
 
     override def toString = {
       val g = gcd(numer, denom)
